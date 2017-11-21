@@ -1,0 +1,53 @@
+<div class="body-wrapper">
+  <div class="offset"></div>
+  <div class="light-wrapper page-title">
+    <div class="container inner">
+      <h1>SSD Banners for Customers</h1>
+    </div>
+    <!-- /.container --> 
+  </div>
+  
+<div class="container">
+  <div class="row ">
+    <ul>
+      <li><h3>Categories:</h3></li>
+      <li (click)='reset()'><button id='-1' class="btn btn-md btn-success">All</button></li>
+      <li *ngFor='let cat of categs; let i = index'><button id='{{i}}' class="btn btn-md btn-info" (click)='filter(cat, i)' *ngIf='cat!=""'>{{formStr(cat)}}</button><button id='{{i}}' class="btn btn-md btn-info" (click)='filter(cat, i)' *ngIf='cat==""'>Others</button></li>
+      <!-- <li (click)='filter("health_beauty")'><button class="btn btn-md btn-info">Health Beauty</button></li> -->
+      <!-- <li (click)='filter(3)'><button class="btn btn-md btn-info">Option3</button></li>
+      <li (click)='filter(4)'><button class="btn btn-md btn-info">Option4</button></li>
+      <li (click)='filter(5)'><button class="btn btn-md btn-info">Option5</button></li> -->
+    </ul>
+
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="container">
+  
+    <div class="col-md-4 image-placing" *ngFor='let imgCont of imgArr; let i = index'>
+      <div class="thumbnail">
+        <button data-toggle="modal" data-target="#myModal" (click)="showImage(i)">
+          <img src="{{imgCont.bUrl}}" alt="Lights" class="image" id="myImg">
+          <div class="caption">
+            <p *ngIf='imgCont.bDetails==""'>No Description</p>
+            <p title='{{imgCont.bDetails}}' *ngIf='imgCont.bDetails!=""'>{{captionText(imgCont.bDetails)}}{{imgCont.bDetails.length > 30 ? '...' : ''}}</p>
+          </div>
+          </button>
+          <div class="caption centered">
+            <p><i class="fa fa-facebook-official" (click)='fbs_click(imgCont.bUrl)' title="share on facebook"></i><a href="{{imgCont.bUrl}}" download><i class="fa fa-download" title="download"></i></a><i class="fa fa-whatsapp" (click)='fbs_click(imgCont.bUrl)' title="share on whatsapp"></i></p>
+          </div>
+        
+      </div>
+    <div class="row" *ngFor='let imgCont of imgArr; let i = index'>
+      <div id="myModal" class="modal" *ngIf="imgCont.isModal">
+        <div class="container">
+         <button type="button" class="close" data-dismiss="modal" (click)="closeImage(i)">&times;</button>
+          <img alt="Lights" class="modal-content" id="img01" src="{{imgCont.bUrl}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+<div class="clearfix"></div>

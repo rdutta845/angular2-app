@@ -1,0 +1,643 @@
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h4>Locked Earned Coins</h4>
+
+              <h3>{{coins.lockedAmount}} coins</h3>
+
+              <p>*Earning waiting for approval</p>
+              
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h4>Available Earned Coins</h4>
+
+              <h3>{{coins.unlockedAmount}} coins<!-- <sup style="font-size: 20px">%</sup> --></h3>
+
+              <p>*Earning available for redeem</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h4>Total Redeem Coins</h4>
+
+              <h3>{{coins.withdrawnAmount}} coins</h3>
+
+              <p>*Earning paid to you</p>
+
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-black">
+            <div class="inner">
+              <h4>Total Earned Coins</h4>
+
+              <h3>{{coins.totalEarning}} coins</h3>
+
+              <p>*Total earning till now</p>
+              
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+
+    </section>    
+
+    <section class="content conten-new">
+        <div class="col-md-12">
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Shopping Earnings</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="box-group" id="accordion">
+                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+
+                <div class="panel box box-success" *ngIf=isMonthNotAva>
+                  
+                    <div class="box-body">
+                      <h4 class="box-title">
+                        No Data Available     
+                      </h4>                
+                    </div>
+                </div>
+
+                 <div class="panel box box-success" *ngIf='months[11].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2Six" (click)='chngFont("#11")'> 
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        December
+                        <i class="fa fa-plus" id="11"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapse2Six" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[11]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                         <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel box box-success" *ngIf='months[10].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2Five" (click)='chngFont("#10")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        November
+                        <i class="fa fa-plus" id="10"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapse2Five" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[10]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel box box-success" *ngIf='months[9].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2Four" (click)='chngFont("#9")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        October
+                        <i class="fa fa-plus" id="9"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapse2Four" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[9]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[8].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2Three" (click)='chngFont("#8")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        September
+                      
+                        <i class="fa fa-plus" id="8"></i>
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapse2Three" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[8]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[7].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2Two" (click)='chngFont("#7")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        August
+                        <i class="fa fa-plus" id="7"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapse2Two" class="panel-collapse collapse">
+                    <div class="box-body">
+                      <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[7]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[6].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2One" (click)='chngFont("#6")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        July
+                        <i class="fa fa-plus" id="6"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapse2One" class="panel-collapse collapse">
+                    <div class="box-body">
+                      <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[6]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[5].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" (click)='chngFont("#5")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        June
+                      
+                        <i class="fa fa-plus" id="5"></i>
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapseSix" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[5]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[4].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" (click)='chngFont("#4")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        May
+                      
+                  
+                        <i class="fa fa-plus" id="4"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapseFive" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                       <tr *ngFor="let elem of months[4]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[3].length>0'>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" (click)='chngFont("#3")'>
+
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                        April
+                        <i class="fa fa-plus" id="3"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                       <tr *ngFor="let elem of months[3]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[2].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" (click)='chngFont("#2")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        March
+                        <i class="fa fa-plus" id="2"></i>
+                     
+                    </h4>
+                  </div>
+                   </a>
+                  <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="box-body">
+                     <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[2]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel box box-success" *ngIf='months[1].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" (click)='chngFont("#1")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        February
+                        <i class="fa fa-plus" id="1"></i>
+                      
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="box-body">
+                      <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[1]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed on {{elem.expectDate|date:"dd MMM yyyy"}}</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel box box-success" *ngIf='months[0].length>0'>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" (click)='chngFont("#0")'>
+                  <div class="box-header with-border">
+                    <h4 class="box-title">
+                      
+                        January
+                      
+                        <i class="fa fa-plus" id="0"></i>
+                    </h4>
+                  </div>
+                  </a>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="box-body">
+                      <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Earn From</th>
+                          <th>Coin Earned</th>
+                          <th>Status</th>
+                          <th>Category</th>
+                          <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let elem of months[0]">
+                          <td>{{elem.date | date:'dd MMM yyyy'}}</td>
+                          <td>{{elem.earn_from}}
+                          </td>
+                          <td>{{elem.Point}}</td>
+                          <td> {{elem.status1}}</td>
+                          <td><p *ngIf='elem.misc2!="" && elem.misc2!="0"'>{{elem.misc2}}</p>
+                          <p *ngIf='elem.misc2=="" || elem.misc2=="0"'>{{elem.misc1}}</p></td>
+                          <td>
+                            <p *ngIf='elem.status1=="Locked"'>Available in 10-60 Days</p>
+                            <p *ngIf='elem.status1=="Rejected"'>Earning Cancelled/Declined by Store</p>
+                            <p *ngIf='elem.status1=="Unlocked"'>Earning Confirmed</p>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+    </section>
+    <div class="clearfix"></div>
+
+
+
+    <!-- Main content -->

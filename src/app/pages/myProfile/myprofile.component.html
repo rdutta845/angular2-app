@@ -1,0 +1,107 @@
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- Horizontal Form -->
+          <!-- /.box -->
+          <!-- general form elements disabled -->
+          <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Contact Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- <form role="form"> -->
+                <!-- text input -->
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Name :</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control fix" [(ngModel)]="name" placeholder="loading ..." disabled>
+                </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Email :</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control fix" [(ngModel)]="email"  placeholder="loading ..." id="inputEmail3" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Mobile Number :</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control fix" [(ngModel)]="phone"  placeholder="loading ..." disabled>
+                </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">My Plan :</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control fix" [(ngModel)]="plan"  placeholder="loading ..." disabled>
+                </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- Horizontal Form -->
+          <!-- /.box -->
+          <!-- general form elements disabled -->
+          <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Profile</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- <form role="form"> -->
+              <div class="form-group col-md-6">
+                  <label>Gender </label>
+                  <select class="form-control" [(ngModel)]="gender" disabled>
+                    <option value="">NA</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Marital Status</label>
+                  <select class="form-control" [(ngModel)]="marital" disabled>
+                    <option value="">NA</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Area</label>
+                  <input type="text" class="form-control" [(ngModel)]="area" placeholder="NA" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label>Pincode</label>
+                  <input type="Number" class="form-control" [(ngModel)]="pincode" placeholder="NA" disabled>
+                </div>
+                <!-- textarea -->
+                <div class="form-group">
+                  <label>Address</label>
+                  <textarea class="form-control" rows="3" [(ngModel)]="address" placeholder="NA"></textarea>
+                </div>
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Save Details</button>
+              </div>
+              <!-- </form> -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <div class="clearfix"></div>
+

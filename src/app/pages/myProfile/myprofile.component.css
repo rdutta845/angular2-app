@@ -1,0 +1,12 @@
+.form-control[disabled]{
+	border: none;
+	background: white;
+	margin-top: -8px;
+	margin-bottom:10px;
+}
+.form-group{
+	margin-bottom:33px; 
+}
+.btn{
+	display: none;
+}

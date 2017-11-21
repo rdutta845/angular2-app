@@ -1,0 +1,18 @@
+.box-header .box-title{
+	display: block;
+}
+.box-title .fa{
+	float:right;
+}
+.content{
+  padding-left:5px !important;
+  padding-right: 5px !important;
+}
+.content-new{
+  padding-left:0px !important;
+  padding-right: 0px !important;
+}
+/*.col-md-12{
+  padding-right: 10px;
+  padding-left: 10px;
+}*/
